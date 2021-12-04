@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+import postRoutes from './routes/posts';
+
 // Initialize express package
 const app = express();
 // Set up body-parser
@@ -10,6 +12,8 @@ app.use(bodyParser.json({limit: "32mb"}));
 app.use(bodyParser.urlencoded({limit: "32mb", extended: true}));
 // Set up cors
 app.use(cors());
+
+app.use('/posts', postRoutes);
 
 // Connect to MongoDB database
 const  CONNECTION_URL = 'mongodb+srv://kazunobu:gansu1806@cluster0.vwoxy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
